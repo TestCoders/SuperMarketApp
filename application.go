@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/marcelblijleven/SuperMarketApp/basket"
+	"github.com/marcelblijleven/SuperMarketApp/inventory"
 	"log"
 	"os"
 	"runtime/debug"
@@ -10,9 +11,10 @@ import (
 
 // application is the main interaction point of the application
 type application struct {
-	infoLog       *log.Logger
-	errorLog      *log.Logger
-	basketManager basket.Manager
+	infoLog          *log.Logger
+	errorLog         *log.Logger
+	basketManager    basket.Manager
+	inventoryManager inventory.Manager
 }
 
 // newApplication returns a new application with initialised logs

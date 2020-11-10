@@ -5,6 +5,7 @@ type Repository interface {
 	GetAll() ([]Basket, error)
 	Get(id string) (Basket, error)
 	Create() (Basket, error)
+	Save(basket Basket) error
 	Update(basket Basket) (Basket, error)
 	Delete(id string) error
 }
@@ -19,6 +20,11 @@ type InMemoryBasketRepository struct {
 // map[string]Basket
 func NewInMemoryBasketRepository() *InMemoryBasketRepository {
 	return &InMemoryBasketRepository{baskets: map[string]Basket{}}
+}
+
+func (r *InMemoryBasketRepository) Save(basket Basket) error {
+	r.baskets[basket.ID] = basket
+	return nil
 }
 
 func (r *InMemoryBasketRepository) GetAll() ([]Basket, error) {

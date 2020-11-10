@@ -8,6 +8,10 @@ type Manager struct {
 	repository Repository
 }
 
+func (m *Manager) Save(basket Basket) error {
+	return m.repository.Save(basket)
+}
+
 func (m *Manager) GetAll() ([]Basket, error) {
 	return m.repository.GetAll()
 }

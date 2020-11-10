@@ -2,12 +2,14 @@ package main
 
 import (
 	"github.com/marcelblijleven/SuperMarketApp/basket"
+	"github.com/marcelblijleven/SuperMarketApp/inventory"
 	"net/http"
 )
 
 func main() {
 	app := newApplication()
 	app.basketManager = basket.NewManager(basket.NewInMemoryBasketRepository())
+	app.inventoryManager = inventory.NewManager(inventory.NewInMemoryProductRepository())
 
 	srv := &http.Server{
 		Addr:     ":3000",

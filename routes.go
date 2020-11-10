@@ -12,6 +12,8 @@ func (a *application) routes() http.Handler {
 	r.HandleFunc("/basket", a.createBasket).Methods("POST")
 	r.HandleFunc("/basket/{id}", a.deleteBasket).Methods("DELETE")
 	r.HandleFunc("/basket/{id}", a.getBasket).Methods("GET")
+	r.HandleFunc("/basket/{id}", a.updateBasket).Methods("POST")
 	r.HandleFunc("/baskets", a.getBaskets).Methods("GET")
+	r.HandleFunc("/checkout/{id}", a.checkout).Methods("POST")
 	return standardMiddleware.Then(r)
 }

@@ -48,6 +48,12 @@ func (b *Basket) UpdateProductLine(line ProductLine) {
 		if b.ProductLines[i].Barcode == line.Barcode {
 			found = true
 			b.ProductLines[i].Quantity += line.Quantity
+
+			if b.ProductLines[i].Quantity < 1 {
+				// Note: this is slow because it preserves order
+				b.ProductLines = append(b.ProductLines[:i], b.ProductLines[i+1:]...)
+			}
+
 			return
 		}
 	}
