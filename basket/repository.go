@@ -2,6 +2,7 @@ package basket
 
 // Repository interface
 type Repository interface {
+	GetAll() ([]Basket, error)
 	Get(id string) (Basket, error)
 	Create() (Basket, error)
 	Update(basket Basket) (Basket, error)
@@ -20,8 +21,20 @@ func NewInMemoryBasketRepository() *InMemoryBasketRepository {
 	return &InMemoryBasketRepository{baskets: map[string]Basket{}}
 }
 
+func (r *InMemoryBasketRepository) GetAll() ([]Basket, error) {
+	if r.baskets == nil {
+		return nil, ErrRepositoryNotInitialised
+	}
+
+	return basketMapToSlice(r.baskets), nil
+}
+
 // Get retrieves a basket by id
 func (r *InMemoryBasketRepository) Get(id string) (Basket, error) {
+	if r.baskets == nil {
+		return Basket{}, ErrRepositoryNotInitialised
+	}
+
 	basket, ok := r.baskets[id]
 
 	if !ok {
@@ -33,6 +46,10 @@ func (r *InMemoryBasketRepository) Get(id string) (Basket, error) {
 
 // Create creates a basket with a generated ID
 func (r InMemoryBasketRepository) Create() (Basket, error) {
+	if r.baskets == nil {
+		return Basket{}, ErrRepositoryNotInitialised
+	}
+
 	basket := Basket{
 		ID:           generateID(),
 		ProductLines: []ProductLine{},
@@ -44,12 +61,20 @@ func (r InMemoryBasketRepository) Create() (Basket, error) {
 
 // Update replaces the basket in the map with the provided basket
 func (r InMemoryBasketRepository) Update(basket Basket) (Basket, error) {
+	if r.baskets == nil {
+		return Basket{}, ErrRepositoryNotInitialised
+	}
+
 	r.baskets[basket.ID] = basket
 	return basket, nil
 }
 
 // Delete removes the basket from the map by ID
 func (r InMemoryBasketRepository) Delete(id string) error {
+	if r.baskets == nil {
+		return ErrRepositoryNotInitialised
+	}
+
 	_, ok := r.baskets[id]
 
 	if ok {
