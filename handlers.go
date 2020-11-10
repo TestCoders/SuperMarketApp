@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"github.com/gorilla/mux"
 	"net/http"
 )
 
@@ -22,4 +23,12 @@ func (a *application) createBasket(w http.ResponseWriter, _ *http.Request) {
 	if err = e.Encode(&basket); err != nil {
 		a.LogError(err)
 	}
+}
+
+func (a *application) deleteBasket(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	id := params["id"]
+	_ = a.basketManager.Delete(id)
+
+	w.WriteHeader(http.StatusNoContent)
 }
