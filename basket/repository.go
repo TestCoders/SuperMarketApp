@@ -16,8 +16,8 @@ type InMemoryBasketRepository struct {
 
 // NewInMemoryBasketRepository returns a InMemoryBasketRepository with an initialised
 // map[string]Basket
-func NewInMemoryBasketRepository() InMemoryBasketRepository {
-	return InMemoryBasketRepository{baskets: map[string]Basket{}}
+func NewInMemoryBasketRepository() *InMemoryBasketRepository {
+	return &InMemoryBasketRepository{baskets: map[string]Basket{}}
 }
 
 // Get retrieves a basket by id
