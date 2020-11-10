@@ -2,7 +2,7 @@ package basket
 
 // Basket represents a shopping basket
 type Basket struct {
-	ID           string        `json:"barcode"`
+	ID           string        `json:"id"`
 	ProductLines []ProductLine `json:"products"`
 }
 
