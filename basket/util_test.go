@@ -18,3 +18,42 @@ func Test_generateID(t *testing.T) {
 		t.Error("expected id to match uuid regex")
 	}
 }
+
+func Test_basketMapToSlice(t *testing.T) {
+	basketOne := Basket{
+		ID:           "1",
+		ProductLines: []ProductLine{},
+	}
+	basketTwo := Basket{
+		ID:           "2",
+		ProductLines: []ProductLine{},
+	}
+
+	m := map[string]Basket{
+		"1": basketOne,
+		"2": basketTwo,
+	}
+
+	s := basketMapToSlice(m)
+
+	if len(s) != 2 {
+		t.Error("expected len of slice to be 2")
+		return
+	}
+
+	if s[0].ID != "1" {
+		t.Errorf("expected id of basket to match 1, instead got %q", s[0].ID)
+	}
+
+	if s[0].ProductLines == nil {
+		t.Error("expected ProductLines to be non nil")
+	}
+
+	if s[1].ID != "2" {
+		t.Errorf("expected id of basket to match 2, instead got %q", s[0].ID)
+	}
+
+	if s[1].ProductLines == nil {
+		t.Error("expected ProductLines to be non nil")
+	}
+}
