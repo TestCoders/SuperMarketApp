@@ -11,6 +11,7 @@ func (a *application) routes() http.Handler {
 	r := mux.NewRouter()
 	r.HandleFunc("/basket", a.createBasket).Methods("POST")
 	r.HandleFunc("/basket/{id}", a.deleteBasket).Methods("DELETE")
-
+	r.HandleFunc("/basket/{id}", a.getBasket).Methods("GET")
+	r.HandleFunc("/baskets", a.getBaskets).Methods("GET")
 	return standardMiddleware.Then(r)
 }
