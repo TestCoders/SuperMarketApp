@@ -9,7 +9,6 @@ namespace Service.Tests
     public class RegisterServiceTests
     {
         private Mock<ICalculateCartPrice> _calculatePriceServiceMock;
-        private Mock<IRegisterService> _registerServiceMock;
 
         private Cart _cart;
 
@@ -17,7 +16,6 @@ namespace Service.Tests
         public void Setup()
         {
             _calculatePriceServiceMock = new Mock<ICalculateCartPrice>();
-            _registerServiceMock = new Mock<IRegisterService>();
             
             _cart = new Cart();
             _cart.AddToCart(new Product("Kaas", 156734, 4.99));
@@ -28,7 +26,7 @@ namespace Service.Tests
         }
 
         [Test]
-        public void ShouldPass_WhenCheckOut()
+        public void Register_ShouldPass_WhenCheckOut()
         {
             // Assemble
             _calculatePriceServiceMock.Setup(mock => mock.Calculate(_cart));

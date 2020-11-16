@@ -9,7 +9,7 @@ namespace Service.IntegrationTests
         private Cart _cart;
 
         [Test]
-        public void CalculateCart_NoDiscount()
+        public void CalculateCart_NoDiscount_ShouldBeCorrectPrice()
         {
             // Assemble
             _cart = new Cart();
@@ -27,7 +27,7 @@ namespace Service.IntegrationTests
         }
 
         [Test]
-        public void CalculateCart_WithBonusAndExpiryDiscount()
+        public void CalculateCart_WithBonusAndExpiryDiscount_ShouldBeCorrectPrice()
         {
             _cart = new Cart();
             _cart.AddToCart(new Product("Kaas", 156734, 4.99, Discount.Bonus));
@@ -44,7 +44,7 @@ namespace Service.IntegrationTests
         }
 
         [Test]
-        public void CheckOut_ShouldPrintCorrectReceipt()
+        public void CartWithProduct_CheckOut_ShouldPrintCorrectReceipt()
         {
             // Assemble
             _cart = new Cart();

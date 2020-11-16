@@ -18,7 +18,7 @@ namespace Service.Tests
         }
 
         [Test]
-        public void ShouldReturnProductPrice_WhenNoDiscount()
+        public void CalculateProductPrice_ShouldReturnProductPrice_WhenNoDiscount()
         {
             // Assemble
             var product = new Product("Kaaaas", 123, 5.49, Discount.NoDiscount);
@@ -31,7 +31,7 @@ namespace Service.Tests
         }
 
         [Test]
-        public void ShouldReturnPriceWithBonusDiscount_WhenGivenBonusDiscount()
+        public void CalculateProductPrice_ShouldReturnPriceWithBonusDiscount_WhenGivenBonusDiscount()
         {
             // Assemble 
             var product = new Product("Kaaaas", 123, 5.49, Discount.Bonus);
@@ -47,7 +47,7 @@ namespace Service.Tests
         }
 
         [Test]
-        public void ShouldReturnPriceWithExpiryDiscount_WhenGivenExpiryDiscount()
+        public void CalculateProductPrice_ShouldReturnPriceWithExpiryDiscount_WhenGivenExpiryDiscount()
         {
             // Assemble 
             var product = new Product("Kaaaas", 123, 5.49, Discount.Expiry);
@@ -63,7 +63,7 @@ namespace Service.Tests
         }
 
         [Test]
-        public void ShouldThrowNullReferenceExpcetion_WhenGivenNullProduct()
+        public void CalculateProductPrice_ShouldThrowNullReferenceExpcetion_WhenGivenNullProduct()
         {
             Exception ex = Assert.Throws<NullReferenceException>(delegate
             {

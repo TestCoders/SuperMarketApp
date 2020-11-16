@@ -26,7 +26,7 @@ namespace Service.Tests
         }
 
         [Test]
-        public void ShouldReturnCorrectDouble_WhenGivenCartNoDiscount()
+        public void CalculatePrice_ShouldReturnCorrectDouble_WhenGivenCartNoDiscount()
         {
             // Assemble
             _calculateProductPriceMock.Setup(mock => mock.Calculate(_cart.Products[0])).Returns(_cart.Products[0].Price);
@@ -48,7 +48,7 @@ namespace Service.Tests
         }
 
         [Test]
-        public void ShouldRoundUp_WhenGivenThreeDecimals()
+        public void CalculatePrice_ShouldRoundUp_WhenGivenThreeDecimals()
         {
             // Assemble
             _calculateProductPriceMock.Setup(mock => mock.Calculate(_cart.Products[0])).Returns(5.495);
@@ -65,7 +65,7 @@ namespace Service.Tests
         }
 
         [Test]
-        public void ShouldRoundDown_WhenGivenThreeDecimals()
+        public void CalculatePrice_ShouldRoundDown_WhenGivenThreeDecimals()
         {
             // Assemble
             _calculateProductPriceMock.Setup(mock => mock.Calculate(_cart.Products[0])).Returns(5.494);
