@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SuperMarketApp/.vs/SuperMarketApp/v16/TestStore/0/000.testlog
+/SuperMarketApp/.vs/SuperMarketApp/v16/TestStore/0/testlog.manifest
+/SuperMarketApp/.vs/SuperMarketApp/DesignTimeBuild/.dtbcache.v2
+/SuperMarketApp/.vs/SuperMarketApp/v16/TestStore/0/001.testlog
+*.testlog
