@@ -3,23 +3,43 @@ package com.testcoders;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
+import static java.lang.Float.parseFloat;
 
 public class SupermarketTest {
-    List<Product> products;
 
     @Test
     public void addProductTest() {
-        Basket basket = new Basket(products);
-        products.add(new Product("name", 12345, 114.44, 20));
-        Assert.assertEquals(products.size(), 1);
+        Basket basket = new Basket();
+        Product product = new Product("name", 12345, 114.44, new ProductCategory("Ham"));
+        Assert.assertEquals(basket.getProducts().size(), 0);
+
+        basket.addProduct(product);
+        Assert.assertEquals(basket.getProducts().size(), 1);
     }
-    //addProductsTest
 
-    //sumProductsInBasketTest
+    @Test
+    public void getDiscountPriceTest() {
+        Product product = new Product("name", 12345, 114.44, new ProductCategory("Milk"));
 
-    //productCategoriesTest
-    //Name, discount
+        Assert.assertEquals(product.getPrice(), 74.39,0);
+    }
 
-    //
+    @Test
+    public void roundingTest(){
+        Assert.assertEquals( "double : " + String.format("%.2f", 64.849999)), 64.85, 64.85, 0);
+        Assert.assertEquals( Math.round(74.850000 * 100) / 100, 74.85, 0);
+        Assert.assertEquals( Math.round(84.8450000 * 100) / 100, 84.84, 0);
+    }
+
+    @Test
+    public void totalTest() {
+        Basket basket = new Basket();
+        Product product = new Product("name", 12345, 114.44,  new ProductCategory("Fiets"));
+        Product product2 = new Product("name", 12345, 114.44,  new ProductCategory("Beer"));
+
+        basket.addProduct(product);
+        basket.addProduct(product2);
+        Assert.assertEquals(basket.getProducts().size(), 2);
+        Assert.assertEquals(basket.getTotal(),205.99, 0);
+    }
 }

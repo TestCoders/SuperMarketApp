@@ -1,16 +1,27 @@
 package com.testcoders;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Basket {
-    private List<Product> products = new ArrayList<Product>();
+    private final ArrayList<Product> products;
 
-    public Basket(List<Product> products) {
-        this.products = products;
+    public Basket() {
+        this.products = new ArrayList<Product>();
     }
 
     public void addProduct(Product product) {
         this.products.add(product);
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    public double getTotal() {
+        return products.stream().mapToDouble(Product::getPrice).sum();
+    }
+
+    public double getTotalWithDiscount() {
+        return products.stream().mapToDouble(Product::getPrice).sum();
     }
 }
