@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Tests", "Service.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.IntegrationTests", "IntegrationTests\Service.IntegrationTests.csproj", "{81FC6458-DA07-496A-BCB5-D62A8516B157}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarketApp.Repositories", "SuperMarketApp.Repositories\SuperMarketApp.Repositories.csproj", "{46F5591E-C724-494D-ABCF-4D6B1295A6A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{81FC6458-DA07-496A-BCB5-D62A8516B157}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81FC6458-DA07-496A-BCB5-D62A8516B157}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81FC6458-DA07-496A-BCB5-D62A8516B157}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F5591E-C724-494D-ABCF-4D6B1295A6A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F5591E-C724-494D-ABCF-4D6B1295A6A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F5591E-C724-494D-ABCF-4D6B1295A6A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F5591E-C724-494D-ABCF-4D6B1295A6A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

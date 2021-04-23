@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using Service.Enum;
 using Service.Models;
+using SuperMarketApp.Repositories.Enum;
 
 namespace Service.IntegrationTests
 {

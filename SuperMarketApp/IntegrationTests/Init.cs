@@ -18,6 +18,7 @@ namespace Service.IntegrationTests
             serviceCollection.AddScoped<ICalculateProductPrice, CalculateProductPrice>();
             serviceCollection.AddScoped<ICalculateCartPrice, CalculateCartPrice>();
             serviceCollection.AddScoped<IRegisterService, RegisterService>();
+            serviceCollection.AddScoped<IProductService, ProductService>();
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
             CalculateProductPrice = serviceProvider.GetService<ICalculateProductPrice>();

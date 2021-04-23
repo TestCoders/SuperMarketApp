@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using Service.Enum;
 using Service.Interfaces;
 using Service.Models;
 using Service.Services;
+using SuperMarketApp.Repositories.Enum;
 using System;
 
 namespace Service.Tests

@@ -1,6 +1,6 @@
-﻿using Service.Enum;
-using Service.Interfaces;
+﻿using Service.Interfaces;
 using Service.Models;
+using SuperMarketApp.Repositories.Enum;
 using System;
 
 namespace Service.Services
