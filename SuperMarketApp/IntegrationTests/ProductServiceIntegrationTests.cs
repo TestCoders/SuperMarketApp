@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Service.IntegrationTests;
 using Service.Interfaces;
 using Service.Services;
 using SuperMarketApp.Repositories.Context;
@@ -8,64 +9,104 @@ using System;
 
 namespace SuperMarketApp.Service.IntegrationTests
 {
-    public class ProductServiceIntegrationTests
+    public class ProductServiceIntegrationTests : Init
     {
-        private IProductService _productService;
         private ProductContext _productContext;
 
         [SetUp]
         public void Setup()
         {
             _productContext = new ProductContext();
-            _productService = new ProductService(_productContext);
+            ProductService = new ProductService(_productContext);
+        }
+
+        [Test]
+        public void DecreaseProductAmountByOne_ShouldReturnOneRowAffected()
+        {
+            // Assign
+            var expectedRowsAffected = 1;
+
+            // Assemble
+            var barcode = 156734;
+
+            // Act
+            var rowsAffected = ProductService.DecreaseProductAmount(barcode, 1);
+
+            // Assert
+            Assert.AreEqual(expectedRowsAffected, rowsAffected);
+        }
+
+        [Test]
+        public void DeleteProductTest_ShouldReturnOneRowAffected()
+        {
+            // Assign
+            var barcode = 54752848;
+
+            // Assemble
+            var product = new ProductDB
+            {
+                Amount = 100,
+                Barcode = barcode,
+                Discount = Discount.NoDiscount,
+                Price = 1.59M,
+                ProductName = "Should not be visible in DB"
+            };
+
+            ProductService.InsertProduct(product);
+
+            // Act
+            var rowsAffected = ProductService.DeleteProduct(barcode);
+
+            // Assert
+            Assert.AreEqual(1, rowsAffected);
         }
 
         [Test]
         public void GetProductTest_ShouldReturnOneProduct()
         {
-            var product = _productService.GetProduct(156734);
+            var product = ProductService.GetProduct(156734);
             Assert.AreEqual("Kaas", product.ProductName);
-        }
-
-        [Test]
-        public void InsertProductTest_ShouldThrowIfProductExists()
-        {
-            // Assign
-            Exception ex = new Exception();
-
-            // Assemble
-            var product = new ProductDB
-            {
-                ProductName = "Haribo snoepies",
-                Barcode = 81681385,
-                Price = 1.49M,
-                Discount = Discount.NoDiscount,
-                Amount = 100
-            };
-
-            // Act
-            try
-            {
-                var rowsAffected = _productService.InsertProduct(product);
-            }
-            catch (Exception e)
-            {
-                ex = e;
-            }
-
-            // Assert
-            Assert.That(ex is ArgumentException, $"No Exception was thrown. Please check if {product.Barcode} was inserted");
         }
 
         [Test]
         public void InsertProductTest_ShouldReturnOneRowAffectedWhenProductAdded()
         {
+            // Assign 
+            var expectedRowsAffected = 1;
 
+            // Assemble
+            var barcode = 23564234;
+
+            var product = new ProductDB
+            {
+                ProductName = "Bananen",
+                Barcode = barcode,
+                Price = 1.99M,
+                Discount = Discount.Bonus,
+                Amount = 100
+            };
+
+            var actualRowsAffected = ProductService.InsertProduct(product);
+
+            Assert.AreEqual(expectedRowsAffected, actualRowsAffected);
+
+            // Clean up
+            CleanUp(barcode);
         }
 
-        private void CleanUp(ProductDB product)
+        private void CleanUp(int barcode)
         {
-
+            try
+            {
+                ProductService.DeleteProduct(barcode);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during clean up! Product with barcode {barcode} is NOT deleted");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.InnerException);
+            }
         }
     }
 }

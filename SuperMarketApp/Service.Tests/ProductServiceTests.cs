@@ -28,9 +28,6 @@ namespace Service.Tests
         [Test]
         public void AddProductTest_ShouldReturnOneRowAffected()
         {
-            // Assign
-            var expectedRowsAffected = 1;
-
             // Assemble
             var product = new ProductDB
             {
@@ -41,7 +38,7 @@ namespace Service.Tests
                 Amount = 1
             };
 
-            _mockContext.Setup(m => m.Product).Returns(_mockSet.Object);
+            _mockContext.Setup(m => m.Product).Returns(() =>_mockSet.Object);
             _productService = new ProductService(_mockContext.Object);
 
             // Act

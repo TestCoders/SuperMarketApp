@@ -8,7 +8,7 @@ namespace Service.Services
 {
     public class ProductService : IProductService
     {
-        private ProductContext _context;
+        private readonly ProductContext _context;
 
         public ProductService(ProductContext context)
         {
@@ -17,12 +17,23 @@ namespace Service.Services
 
         public int DecreaseProductAmount(int barcode, int amount)
         {
-            throw new NotImplementedException("Is yet to be build");
+            var product = GetProduct(barcode);
+            product.Amount -= amount;
+            var rowsAffected = _context.SaveChanges();
+            return rowsAffected;
+        }
+
+        public int DeleteProduct(int barcode)
+        {
+            var productToDelete = GetProduct(barcode);
+            _context.Product.Remove(productToDelete);
+            var rowsAffected = _context.SaveChanges();
+            return rowsAffected;
         }
 
         public ProductDB GetProduct(int barcode)
         {
-            return _context.Product.First(x => x.Barcode == barcode);
+            return _context.Product.FirstOrDefault(x => x.Barcode == barcode);
         }
 
         public int InsertProduct(ProductDB product)
