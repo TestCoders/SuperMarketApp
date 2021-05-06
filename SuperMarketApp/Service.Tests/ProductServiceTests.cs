@@ -6,9 +6,6 @@ using Service.Services;
 using SuperMarketApp.Repositories.Context;
 using SuperMarketApp.Repositories.Enum;
 using SuperMarketApp.Repositories.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Service.Tests
 {

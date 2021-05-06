@@ -9,7 +9,6 @@ namespace Service.Tests
     public class CalculateCartPriceTests
     {
         private Mock<ICalculateProductPrice> _calculateProductPriceMock;
-
         private Cart _cart;
 
         [SetUp]

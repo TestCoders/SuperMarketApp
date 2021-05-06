@@ -1,10 +1,7 @@
-﻿using Service.Clients;
-using Service.Interfaces;
+﻿using Service.Interfaces;
 using Service.Models;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Service.Services
@@ -18,9 +15,9 @@ namespace Service.Services
             _productService = productService;
         }
 
-        public async Task PostProvisioning(IProvisioningClient client, ProvisioningRequest request)
+        public async Task<HttpResponseMessage> PostProvisioning(IProvisioningClient client, ProvisioningRequest request)
         {
-            var result = await client.SendProvisioningRequest(request);
+            return await client.SendProvisioningRequest(request);
         }
 
         public ProvisioningRequest CreateProvisionRequest(int provisionMax)

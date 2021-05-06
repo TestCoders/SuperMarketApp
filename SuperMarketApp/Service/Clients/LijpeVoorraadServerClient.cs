@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Service.Interfaces;
 using Service.Models;
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;

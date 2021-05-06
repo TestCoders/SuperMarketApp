@@ -1,8 +1,5 @@
 using NUnit.Framework;
 using Service.IntegrationTests;
-using Service.Interfaces;
-using Service.Services;
-using SuperMarketApp.Repositories.Context;
 using SuperMarketApp.Repositories.Enum;
 using SuperMarketApp.Repositories.Models;
 using System;
@@ -11,15 +8,6 @@ namespace SuperMarketApp.Service.IntegrationTests
 {
     public class ProductServiceIntegrationTests : Init
     {
-        private ProductContext _productContext;
-
-        [SetUp]
-        public void Setup()
-        {
-            _productContext = new ProductContext();
-            ProductService = new ProductService(_productContext);
-        }
-
         [Test]
         public void DecreaseProductAmountByOne_ShouldReturnOneRowAffected()
         {

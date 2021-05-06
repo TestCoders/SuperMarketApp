@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperMarketApp.Repositories.Enum;
 using SuperMarketApp.Repositories.Models;
-using System;
-using System.Linq;
 
 namespace SuperMarketApp.Repositories.Context
 {

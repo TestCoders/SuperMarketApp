@@ -1,10 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using Service.Clients;
 using Service.Interfaces;
 using Service.Services;
 using SuperMarketApp.Repositories.Context;
-using System.Net.Http;
 
 namespace Service.IntegrationTests
 {
@@ -26,6 +24,7 @@ namespace Service.IntegrationTests
             serviceCollection.AddScoped<IRegisterService, RegisterService>();
             serviceCollection.AddScoped<IProductService, ProductService>();
             serviceCollection.AddScoped<ILijpeVoorraadServerService, LijpeVoorraadServerService>();
+
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
             CalculateProductPrice = serviceProvider.GetService<ICalculateProductPrice>();

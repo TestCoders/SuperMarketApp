@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Service.Clients;
 using Service.Interfaces;
 using Service.Services;
 
@@ -13,6 +14,7 @@ namespace Service
             serviceColletion.AddScoped<IRegisterService, RegisterService>();
             serviceColletion.AddScoped<IProductService, ProductService>();
             serviceColletion.AddScoped<ILijpeVoorraadServerService, LijpeVoorraadServerService>();
+            serviceColletion.AddScoped<IProvisioningClient, LijpeVoorraadServerClient>();
         }
     }
 }
