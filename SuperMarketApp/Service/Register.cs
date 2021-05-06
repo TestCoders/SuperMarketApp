@@ -12,6 +12,7 @@ namespace Service
             serviceColletion.AddScoped<ICalculateCartPrice, CalculateCartPrice>();
             serviceColletion.AddScoped<IRegisterService, RegisterService>();
             serviceColletion.AddScoped<IProductService, ProductService>();
+            serviceColletion.AddScoped<ILijpeVoorraadServerService, LijpeVoorraadServerService>();
         }
     }
 }

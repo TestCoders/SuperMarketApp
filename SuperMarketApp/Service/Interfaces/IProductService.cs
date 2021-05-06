@@ -1,4 +1,5 @@
 ﻿using SuperMarketApp.Repositories.Models;
+using System.Collections.Generic;
 
 namespace Service.Interfaces
 {
@@ -7,6 +8,7 @@ namespace Service.Interfaces
         int DecreaseProductAmount(int barcode, int amount);
         int DeleteProduct(int barcode);
         ProductDB GetProduct(int barcode);
+        IEnumerable<ProductDB> GetProvisionProducts(int provisionMax);
         int InsertProduct(ProductDB product);
     }
 }

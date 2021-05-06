@@ -1,7 +1,9 @@
-﻿using Service.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using Service.Interfaces;
 using SuperMarketApp.Repositories.Context;
 using SuperMarketApp.Repositories.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Service.Services
@@ -29,6 +31,11 @@ namespace Service.Services
             _context.Product.Remove(productToDelete);
             var rowsAffected = _context.SaveChanges();
             return rowsAffected;
+        }
+
+        public IEnumerable<ProductDB> GetProvisionProducts(int provisionMax)
+        {
+            return _context.Product.ToList().Where(p => p.Amount < provisionMax);
         }
 
         public ProductDB GetProduct(int barcode)

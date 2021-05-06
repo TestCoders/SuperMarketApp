@@ -4,7 +4,7 @@ using SuperMarketApp.Repositories.Enum;
 
 namespace Service.IntegrationTests
 {
-    public class ServiceTests : Init
+    public class CalculateCartPriceIntegrationTests : Init
     {
         private Cart _cart;
 
