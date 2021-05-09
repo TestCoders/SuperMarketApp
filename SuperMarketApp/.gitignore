@@ -87,6 +87,7 @@ csx/
 AppPackages/
 
 # Others
+appsettings.json
 sql/
 *.Cache
 ClientBin/

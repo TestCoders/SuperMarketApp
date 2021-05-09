@@ -43,6 +43,14 @@ namespace Service.Services
             return _context.Product.FirstOrDefault(x => x.Barcode == barcode);
         }
 
+        public int IncreaseProductAmount(int barcode, int amount)
+        {
+            var product = GetProduct(barcode);
+            product.Amount += amount;
+            var rowsAffected = _context.SaveChanges();
+            return rowsAffected;
+        }
+
         public int InsertProduct(ProductDB product)
         {
             _context.Product.Add(product);

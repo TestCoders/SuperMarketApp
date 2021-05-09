@@ -17,7 +17,7 @@ namespace Service.Tests
         private Mock<IProductService> _mockProductService;
 
         [Test]
-        public async Task PostProvisioning_ShouldPass()
+        public async Task PostProvisioning_ShouldReturn200()
         {
             // Assign
             var mockResponseMessage = new HttpResponseMessage
@@ -40,9 +40,10 @@ namespace Service.Tests
             _service = new LijpeVoorraadServerService(_mockProductService.Object);
 
             // Act
-            await _service.PostProvisioning(_mockClient.Object, provisioningRequest);
+            var result = await _service.PostProvisioning(_mockClient.Object, provisioningRequest);
 
             // Assert
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
             _mockClient.Verify(m => m.SendProvisioningRequest(provisioningRequest), Times.Once);
         }
     }

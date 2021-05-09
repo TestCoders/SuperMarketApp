@@ -1,8 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using Service.Interfaces;
 using Service.Services;
 using SuperMarketApp.Repositories.Context;
+using System;
+using System.Configuration;
+using System.IO;
 
 namespace Service.IntegrationTests
 {
@@ -13,12 +19,20 @@ namespace Service.IntegrationTests
         protected IRegisterService RegisterService;
         protected IProductService ProductService;
         protected ILijpeVoorraadServerService LijpeVoorraadServerService;
+        private AppSettings Config;
 
         [SetUp]
         public void SetUp()
         {
+            var filePath = Directory.GetCurrentDirectory().Replace(@"bin\Debug\netcoreapp3.1", "") + "appsettings.json";
+            using (var reader = new StreamReader(filePath))
+            {
+                var file = reader.ReadToEnd();
+                Config = JsonConvert.DeserializeObject<AppSettings>(file);
+            }
+
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddDbContext<ProductContext>();
+            serviceCollection.AddDbContext<ProductContext>(options => options.UseSqlServer(Config.ProductContext));
             serviceCollection.AddScoped<ICalculateProductPrice, CalculateProductPrice>();
             serviceCollection.AddScoped<ICalculateCartPrice, CalculateCartPrice>();
             serviceCollection.AddScoped<IRegisterService, RegisterService>();

@@ -20,6 +20,17 @@ namespace Service.Services
             return await client.SendProvisioningRequest(request);
         }
 
+        public int PostSupply(ProvisioningRequest request)
+        {
+            int rowsAffected = 0;
+
+            foreach (var product in request.ProvisionProducts)
+            {
+                rowsAffected += _productService.IncreaseProductAmount(product.Barcode, product.Amount);
+            }
+            return rowsAffected;
+        }
+
         public ProvisioningRequest CreateProvisionRequest(int provisionMax)
         {
             var provisioningRequest = new ProvisioningRequest

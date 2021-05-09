@@ -9,19 +9,12 @@ namespace Service.Clients
 {
     public class LijpeVoorraadServerClient : IProvisioningClient
     {
-        private readonly HttpClient _client;
-
-        public LijpeVoorraadServerClient(HttpClient client)
-        {
-            _client = client;
-        }
-
         public async Task<HttpResponseMessage> SendProvisioningRequest(ProvisioningRequest request)
         {
             var json = JsonConvert.SerializeObject(request);
             var body = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var result = await _client.PostAsync("https://reqbin.com/echo/post/json", body);
+            var result = await new HttpClient().PostAsync("https://reqbin.com/echo/post/json", body);
 
             return result;
         }

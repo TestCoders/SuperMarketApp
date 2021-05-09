@@ -9,11 +9,8 @@ namespace SuperMarketApp.Repositories.Context
     {
         public virtual DbSet<ProductDB> Product { get; set; }
 
-        private static readonly string _connectionString = @"Data Source=PQTE224\SQLEXPRESS;Initial Catalog=SuperMarketApp.Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public ProductContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlServer(_connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

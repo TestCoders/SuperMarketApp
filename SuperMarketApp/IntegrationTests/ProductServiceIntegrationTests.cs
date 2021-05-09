@@ -76,6 +76,7 @@ namespace SuperMarketApp.Service.IntegrationTests
 
             var actualRowsAffected = ProductService.InsertProduct(product);
 
+            // Assert
             Assert.AreEqual(expectedRowsAffected, actualRowsAffected);
 
             // Clean up
@@ -94,6 +95,7 @@ namespace SuperMarketApp.Service.IntegrationTests
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 Console.WriteLine(ex.InnerException);
+                throw;
             }
         }
     }

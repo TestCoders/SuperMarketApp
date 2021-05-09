@@ -10,5 +10,6 @@ namespace Service.Interfaces
         ProductDB GetProduct(int barcode);
         IEnumerable<ProductDB> GetProvisionProducts(int provisionMax);
         int InsertProduct(ProductDB product);
+        int IncreaseProductAmount(int barcode, int amount);
     }
 }

@@ -26,7 +26,7 @@ namespace Service.IntegrationTests
 
             // Assemble
             var provisionRequest = LijpeVoorraadServerService.CreateProvisionRequest(100);
-            var provisioningClient = new LijpeVoorraadServerClient(new HttpClient());
+            var provisioningClient = new LijpeVoorraadServerClient();
 
             // Act
             var result = await LijpeVoorraadServerService.PostProvisioning(provisioningClient, provisionRequest);
