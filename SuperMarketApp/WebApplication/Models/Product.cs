@@ -1,4 +1,4 @@
-﻿using SuperMarketApp.Repositories.Enum;
+﻿using SuperMarketApp.Service.Enum;
 
 namespace Service.Models
 {

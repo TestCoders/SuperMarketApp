@@ -8,10 +8,5 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Service\Service.csproj" />
-    <ProjectReference Include="..\SuperMarketApp.Repositories\SuperMarketApp.Repositories.csproj" />
-  </ItemGroup>
-
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using SuperMarketApp.Repositories.Models;
+﻿using SuperMarketApp.Service.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

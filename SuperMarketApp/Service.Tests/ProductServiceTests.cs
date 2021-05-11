@@ -2,10 +2,8 @@
 using Moq;
 using NUnit.Framework;
 using Service.Interfaces;
-using Service.Services;
 using SuperMarketApp.Repositories.Context;
-using SuperMarketApp.Repositories.Enum;
-using SuperMarketApp.Repositories.Models;
+using SuperMarketApp.Service.Models;
 
 namespace Service.Tests
 {

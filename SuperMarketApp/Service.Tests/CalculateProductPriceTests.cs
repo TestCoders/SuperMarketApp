@@ -2,7 +2,7 @@
 using Service.Interfaces;
 using Service.Models;
 using Service.Services;
-using SuperMarketApp.Repositories.Enum;
+using SuperMarketApp.Service.Enum;
 using System;
 
 namespace Service.Tests

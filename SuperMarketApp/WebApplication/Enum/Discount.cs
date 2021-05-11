@@ -1,4 +1,4 @@
-﻿namespace SuperMarketApp.Repositories.Enum
+﻿namespace SuperMarketApp.Service.Enum
 {
     public enum Discount
     {

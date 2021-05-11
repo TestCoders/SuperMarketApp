@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using Service.IntegrationTests;
-using SuperMarketApp.Repositories.Enum;
-using SuperMarketApp.Repositories.Models;
+using SuperMarketApp.Service.Enum;
+using SuperMarketApp.Service.Models;
 using System;
 using System.Threading.Tasks;
 

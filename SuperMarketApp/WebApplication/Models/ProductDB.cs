@@ -1,6 +1,6 @@
-﻿using SuperMarketApp.Repositories.Enum;
+﻿using SuperMarketApp.Service.Enum;
 
-namespace SuperMarketApp.Repositories.Models
+namespace SuperMarketApp.Service.Models
 {
     public class ProductDB
     {
