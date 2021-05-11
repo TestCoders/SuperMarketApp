@@ -1,13 +1,13 @@
 ﻿using Service.Interfaces;
-using Service.Models;
 using SuperMarketApp.Service.Enum;
+using SuperMarketApp.Service.Models;
 using System;
 
 namespace Service.Services
 {
     public class CalculateProductPrice : ICalculateProductPrice
     {
-        public double Calculate(Product product)
+        public decimal Calculate(Product product)
         {
             if (product == null)
             {

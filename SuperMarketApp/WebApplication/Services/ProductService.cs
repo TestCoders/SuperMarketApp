@@ -34,12 +34,12 @@ namespace Service.Services
             return rowsAffected;
         }
 
-        public async Task<IEnumerable<ProductDB>> GetProvisionProducts(int provisionMax)
+        public async Task<IEnumerable<Product>> GetProvisionProducts(int provisionMax)
         {
             return await Task.FromResult(_context.Product.ToList().Where(p => p.Amount < provisionMax));
         }
 
-        public async Task<ProductDB> GetProduct(int barcode)
+        public async Task<Product> GetProduct(int barcode)
         {
             return await _context.Product.FirstOrDefaultAsync(x => x.Barcode == barcode);
         }
@@ -52,7 +52,7 @@ namespace Service.Services
             return rowsAffected;
         }
 
-        public async Task<int> InsertProduct(ProductDB product)
+        public async Task<int> InsertProduct(Product product)
         {
             await _context.Product.AddAsync(product);
             var rowsAffected = await _context.SaveChangesAsync();

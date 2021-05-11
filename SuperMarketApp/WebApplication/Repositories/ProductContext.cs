@@ -7,7 +7,7 @@ namespace SuperMarketApp.Repositories.Context
 {
     public class ProductContext : DbContext 
     {
-        public virtual DbSet<ProductDB> Product { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
 
         public ProductContext(DbContextOptions options) : base(options)
         {
@@ -15,7 +15,7 @@ namespace SuperMarketApp.Repositories.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProductDB>().Property(p => p.Discount).
+            modelBuilder.Entity<Product>().Property(p => p.Discount).
                 HasConversion(new EnumToStringConverter<Discount>());
         }
     }

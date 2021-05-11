@@ -13,9 +13,9 @@ namespace Service.Services
             _calculateProductPrice = calculateProductPrice;
         }
 
-        public double Calculate(Cart cart)
+        public decimal Calculate(Cart cart)
         {
-            double totalPrice = new double();
+            decimal totalPrice = new decimal();
 
             foreach (var product in cart.Products)
             {

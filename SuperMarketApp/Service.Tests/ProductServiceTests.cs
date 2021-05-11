@@ -9,14 +9,14 @@ namespace Service.Tests
 {
     public class ProductServiceTests
     {
-        private Mock<DbSet<ProductDB>> _mockSet;
+        private Mock<DbSet<Product>> _mockSet;
         private Mock<ProductContext> _mockContext;
         private IProductService _productService;
 
         [SetUp]
         public void Init()
         {
-            _mockSet = new Mock<DbSet<ProductDB>>();
+            _mockSet = new Mock<DbSet<Product>>();
             _mockContext = new Mock<ProductContext>();
         }
 

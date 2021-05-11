@@ -2,7 +2,7 @@
 {
     public static class Constants
     {
-        public const double BonusDiscount = 0.8;
-        public const double ExpiryDiscount = 0.65;
+        public const decimal BonusDiscount = 0.8M;
+        public const decimal ExpiryDiscount = 0.65M;
     }
 }

@@ -1,20 +1,14 @@
 ﻿using SuperMarketApp.Service.Enum;
 
-namespace Service.Models
+namespace SuperMarketApp.Service.Models
 {
     public class Product
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
+        public string ProductName { get; set; }
         public int Barcode { get; set; }
-        public double Price { get; set; }
-        public Discount Discount { get; set; }
-
-        public Product(string name, int barcode, double price, Discount discount = Discount.NoDiscount)
-        {
-            Name = name;
-            Barcode = barcode;
-            Price = price;
-            Discount = discount;
-        }
+        public decimal Price { get; set; }
+        public Discount Discount { get; set; } = Discount.NoDiscount;
+        public int Amount { get; set; }
     }
 }

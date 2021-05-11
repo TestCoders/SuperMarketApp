@@ -4,6 +4,6 @@ namespace Service.Interfaces
 {
     public interface ICalculateCartPrice
     {
-        double Calculate(Cart cart);
+        decimal Calculate(Cart cart);
     }
 }

@@ -32,7 +32,7 @@ namespace SuperMarketApp.Service.IntegrationTests
             var barcode = 54752848;
 
             // Assemble
-            var product = new ProductDB
+            var product = new Product
             {
                 Amount = 100,
                 Barcode = barcode,
@@ -66,7 +66,7 @@ namespace SuperMarketApp.Service.IntegrationTests
             // Assemble
             var barcode = 23564234;
 
-            var product = new ProductDB
+            var product = new Product
             {
                 ProductName = "Bananen",
                 Barcode = barcode,

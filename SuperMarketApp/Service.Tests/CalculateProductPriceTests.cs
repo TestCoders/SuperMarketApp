@@ -3,6 +3,7 @@ using Service.Interfaces;
 using Service.Models;
 using Service.Services;
 using SuperMarketApp.Service.Enum;
+using SuperMarketApp.Service.Models;
 using System;
 
 namespace Service.Tests
@@ -21,7 +22,7 @@ namespace Service.Tests
         public void CalculateProductPrice_ShouldReturnProductPrice_WhenNoDiscount()
         {
             // Assemble
-            var product = new Product("Kaaaas", 123, 5.49, Discount.NoDiscount);
+            var product = new Product() { ProductName = "Kaaaas", Price = 5.49M, Discount = Discount.NoDiscount };
 
             // Act
             var price = _calculateProductPrice.Calculate(product);
@@ -34,7 +35,7 @@ namespace Service.Tests
         public void CalculateProductPrice_ShouldReturnPriceWithBonusDiscount_WhenGivenBonusDiscount()
         {
             // Assemble 
-            var product = new Product("Kaaaas", 123, 5.49, Discount.Bonus);
+            var product = new Product() { ProductName = "Kaaaas", Price = 5.49M, Discount = Discount.Bonus };
 
             // Assign
             var expectedPrice = product.Price * Constants.BonusDiscount;
@@ -50,7 +51,7 @@ namespace Service.Tests
         public void CalculateProductPrice_ShouldReturnPriceWithExpiryDiscount_WhenGivenExpiryDiscount()
         {
             // Assemble 
-            var product = new Product("Kaaaas", 123, 5.49, Discount.Expiry);
+            var product = new Product() { ProductName = "Kaaaas", Price = 5.49M, Discount = Discount.Expiry };
 
             // Assign
             var expectedPrice = product.Price * Constants.ExpiryDiscount;

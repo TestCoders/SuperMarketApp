@@ -8,9 +8,9 @@ namespace Service.Interfaces
     {
         Task<int> DecreaseProductAmount(int barcode, int amount);
         Task<int> DeleteProduct(int barcode);
-        Task<ProductDB> GetProduct(int barcode);
-        Task<IEnumerable<ProductDB>> GetProvisionProducts(int provisionMax);
-        Task<int> InsertProduct(ProductDB product);
+        Task<Product> GetProduct(int barcode);
+        Task<IEnumerable<Product>> GetProvisionProducts(int provisionMax);
+        Task<int> InsertProduct(Product product);
         Task<int> IncreaseProductAmount(int barcode, int amount);
     }
 }

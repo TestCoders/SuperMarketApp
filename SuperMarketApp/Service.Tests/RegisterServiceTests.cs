@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Service.Interfaces;
 using Service.Models;
 using Service.Services;
+using SuperMarketApp.Service.Models;
 
 namespace Service.Tests
 {
@@ -17,11 +18,11 @@ namespace Service.Tests
             _calculatePriceServiceMock = new Mock<ICalculateCartPrice>();
             
             _cart = new Cart();
-            _cart.AddToCart(new Product("Kaas", 156734, 4.99));
-            _cart.AddToCart(new Product("Ham", 579843, 1.49));
-            _cart.AddToCart(new Product("Melk", 378941, 0.99));
-            _cart.AddToCart(new Product("Pizza", 739214, 4.59));
-            _cart.AddToCart(new Product("WC papier", 798234, 1.12));
+            _cart.AddToCart(new Product { ProductName = "Kaas", Barcode = 156734, Price = 4.99M });
+            _cart.AddToCart(new Product { ProductName = "Ham", Barcode = 579843, Price = 1.49M });
+            _cart.AddToCart(new Product { ProductName = "Melk", Barcode = 378941, Price = 0.99M });
+            _cart.AddToCart(new Product { ProductName = "Pizza", Barcode = 739214, Price = 4.59M });
+            _cart.AddToCart(new Product { ProductName = "WC papier", Barcode = 798234, Price = 1.12M });
         }
 
         [Test]
