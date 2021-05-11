@@ -25,9 +25,22 @@ namespace WebApplication.Controllers
         [HttpPost]
         public async Task<ActionResult> PostSupply(ProvisioningRequest provision)
         {
-            _voorraadService.PostSupply(provision);
-
-            return new OkObjectResult(provision);
+            if (provision == null || provision.ProvisionProducts == null)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                await _voorraadService.PostSupply(provision);
+                return new OkObjectResult(provision);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
+
+        // TODO: Note to self:
+        // Add unit and integration tests for PostSupply flow
     }
 }

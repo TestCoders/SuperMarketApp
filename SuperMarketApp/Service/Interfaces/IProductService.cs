@@ -1,15 +1,16 @@
 ﻿using SuperMarketApp.Repositories.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Service.Interfaces
 {
     public interface IProductService
     {
-        int DecreaseProductAmount(int barcode, int amount);
-        int DeleteProduct(int barcode);
-        ProductDB GetProduct(int barcode);
-        IEnumerable<ProductDB> GetProvisionProducts(int provisionMax);
-        int InsertProduct(ProductDB product);
-        int IncreaseProductAmount(int barcode, int amount);
+        Task<int> DecreaseProductAmount(int barcode, int amount);
+        Task<int> DeleteProduct(int barcode);
+        Task<ProductDB> GetProduct(int barcode);
+        Task<IEnumerable<ProductDB>> GetProvisionProducts(int provisionMax);
+        Task<int> InsertProduct(ProductDB product);
+        Task<int> IncreaseProductAmount(int barcode, int amount);
     }
 }

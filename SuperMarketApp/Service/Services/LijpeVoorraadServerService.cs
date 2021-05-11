@@ -20,25 +20,25 @@ namespace Service.Services
             return await client.SendProvisioningRequest(request);
         }
 
-        public int PostSupply(ProvisioningRequest request)
+        public async Task<int> PostSupply(ProvisioningRequest request)
         {
             int rowsAffected = 0;
 
             foreach (var product in request.ProvisionProducts)
             {
-                rowsAffected += _productService.IncreaseProductAmount(product.Barcode, product.Amount);
+                rowsAffected += await _productService.IncreaseProductAmount(product.Barcode, product.Amount);
             }
             return rowsAffected;
         }
 
-        public ProvisioningRequest CreateProvisionRequest(int provisionMax)
+        public async Task<ProvisioningRequest> CreateProvisionRequest(int provisionMax)
         {
             var provisioningRequest = new ProvisioningRequest
             {
                 ProvisionProducts = new List<ProvisioningProduct>()
             };
 
-            var provisioningProducts = _productService.GetProvisionProducts(100);
+            var provisioningProducts = await _productService.GetProvisionProducts(100);
 
             foreach (var product in provisioningProducts)
             {

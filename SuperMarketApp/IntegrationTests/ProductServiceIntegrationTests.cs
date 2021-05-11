@@ -3,13 +3,14 @@ using Service.IntegrationTests;
 using SuperMarketApp.Repositories.Enum;
 using SuperMarketApp.Repositories.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace SuperMarketApp.Service.IntegrationTests
 {
     public class ProductServiceIntegrationTests : Init
     {
         [Test]
-        public void DecreaseProductAmountByOne_ShouldReturnOneRowAffected()
+        public async Task DecreaseProductAmountByOne_ShouldReturnOneRowAffected()
         {
             // Assign
             var expectedRowsAffected = 1;
@@ -18,14 +19,14 @@ namespace SuperMarketApp.Service.IntegrationTests
             var barcode = 156734;
 
             // Act
-            var rowsAffected = ProductService.DecreaseProductAmount(barcode, 1);
+            var rowsAffected = await ProductService.DecreaseProductAmount(barcode, 1);
 
             // Assert
             Assert.AreEqual(expectedRowsAffected, rowsAffected);
         }
 
         [Test]
-        public void DeleteProductTest_ShouldReturnOneRowAffected()
+        public async Task DeleteProductTest_ShouldReturnOneRowAffected()
         {
             // Assign
             var barcode = 54752848;
@@ -40,24 +41,24 @@ namespace SuperMarketApp.Service.IntegrationTests
                 ProductName = "Should not be visible in DB"
             };
 
-            ProductService.InsertProduct(product);
+            await ProductService.InsertProduct(product);
 
             // Act
-            var rowsAffected = ProductService.DeleteProduct(barcode);
+            var rowsAffected = await ProductService.DeleteProduct(barcode);
 
             // Assert
             Assert.AreEqual(1, rowsAffected);
         }
 
         [Test]
-        public void GetProductTest_ShouldReturnOneProduct()
+        public async Task GetProductTest_ShouldReturnOneProduct()
         {
-            var product = ProductService.GetProduct(156734);
+            var product = await ProductService.GetProduct(156734);
             Assert.AreEqual("Kaas", product.ProductName);
         }
 
         [Test]
-        public void InsertProductTest_ShouldReturnOneRowAffectedWhenProductAdded()
+        public async Task InsertProductTest_ShouldReturnOneRowAffectedWhenProductAdded()
         {
             // Assign 
             var expectedRowsAffected = 1;
@@ -74,20 +75,20 @@ namespace SuperMarketApp.Service.IntegrationTests
                 Amount = 100
             };
 
-            var actualRowsAffected = ProductService.InsertProduct(product);
+            var actualRowsAffected = await ProductService.InsertProduct(product);
 
             // Assert
             Assert.AreEqual(expectedRowsAffected, actualRowsAffected);
 
             // Clean up
-            CleanUp(barcode);
+            await CleanUp(barcode);
         }
 
-        private void CleanUp(int barcode)
+        private async Task CleanUp(int barcode)
         {
             try
             {
-                ProductService.DeleteProduct(barcode);
+                await ProductService.DeleteProduct(barcode);
             }
             catch (Exception ex)
             {

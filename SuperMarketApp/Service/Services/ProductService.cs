@@ -5,6 +5,7 @@ using SuperMarketApp.Repositories.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Service.Services
 {
@@ -17,44 +18,44 @@ namespace Service.Services
             _context = context;
         }
 
-        public int DecreaseProductAmount(int barcode, int amount)
+        public async Task<int> DecreaseProductAmount(int barcode, int amount)
         {
-            var product = GetProduct(barcode);
+            var product = await GetProduct(barcode);
             product.Amount -= amount;
-            var rowsAffected = _context.SaveChanges();
+            var rowsAffected = await _context.SaveChangesAsync();
             return rowsAffected;
         }
 
-        public int DeleteProduct(int barcode)
+        public async Task<int> DeleteProduct(int barcode)
         {
-            var productToDelete = GetProduct(barcode);
+            var productToDelete = await GetProduct(barcode);
             _context.Product.Remove(productToDelete);
-            var rowsAffected = _context.SaveChanges();
+            var rowsAffected = await _context.SaveChangesAsync();
             return rowsAffected;
         }
 
-        public IEnumerable<ProductDB> GetProvisionProducts(int provisionMax)
+        public async Task<IEnumerable<ProductDB>> GetProvisionProducts(int provisionMax)
         {
-            return _context.Product.ToList().Where(p => p.Amount < provisionMax);
+            return await Task.FromResult(_context.Product.ToList().Where(p => p.Amount < provisionMax));
         }
 
-        public ProductDB GetProduct(int barcode)
+        public async Task<ProductDB> GetProduct(int barcode)
         {
-            return _context.Product.FirstOrDefault(x => x.Barcode == barcode);
+            return await _context.Product.FirstOrDefaultAsync(x => x.Barcode == barcode);
         }
 
-        public int IncreaseProductAmount(int barcode, int amount)
+        public async Task<int> IncreaseProductAmount(int barcode, int amount)
         {
-            var product = GetProduct(barcode);
+            var product = await GetProduct(barcode);
             product.Amount += amount;
-            var rowsAffected = _context.SaveChanges();
+            var rowsAffected = await _context.SaveChangesAsync();
             return rowsAffected;
         }
 
-        public int InsertProduct(ProductDB product)
+        public async Task<int> InsertProduct(ProductDB product)
         {
-            _context.Product.Add(product);
-            var rowsAffected = _context.SaveChanges();
+            await _context.Product.AddAsync(product);
+            var rowsAffected = await _context.SaveChangesAsync();
             return rowsAffected;
         }
     }

@@ -9,10 +9,10 @@ namespace Service.IntegrationTests
     public class LijpeVoorraadServerIntegrationTests : Init
     {
         [Test]
-        public void GetProvisionProductsTest_ShouldReturnAtLeastTwoProducts()
+        public async Task GetProvisionProductsTest_ShouldReturnAtLeastTwoProducts()
         {
             // Act
-            var provisionProducts = LijpeVoorraadServerService.CreateProvisionRequest(100);
+            var provisionProducts = await LijpeVoorraadServerService.CreateProvisionRequest(100);
 
             // Assert
             Assert.That(provisionProducts.ProvisionProducts.Count >= 2);
@@ -25,7 +25,7 @@ namespace Service.IntegrationTests
             var expectedStatusCode = HttpStatusCode.OK;
 
             // Assemble
-            var provisionRequest = LijpeVoorraadServerService.CreateProvisionRequest(100);
+            var provisionRequest = await LijpeVoorraadServerService .CreateProvisionRequest(100);
             var provisioningClient = new LijpeVoorraadServerClient();
 
             // Act
