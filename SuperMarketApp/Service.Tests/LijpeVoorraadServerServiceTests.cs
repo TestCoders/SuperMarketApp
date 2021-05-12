@@ -13,7 +13,7 @@ namespace Service.Tests
     public class LijpeVoorraadServerServiceTests
     {
         private ILijpeVoorraadServerService _service;
-        private Mock<IProvisioningClient> _mockClient;
+        private Mock<ISupplyClient> _mockClient;
         private Mock<IProductService> _mockProductService;
 
         [Test]
@@ -26,7 +26,7 @@ namespace Service.Tests
             };
 
             // Assemble
-            var provisioningRequest = new ProvisioningRequest
+            var provisioningRequest = new SupplyRequest
             {
                 ProvisionProducts = new List<ProvisioningProduct>()
             };
@@ -34,17 +34,17 @@ namespace Service.Tests
             provisioningRequest.ProvisionProducts.Add(new ProvisioningProduct { Amount = 12, Barcode = 1834 });
 
             _mockProductService = new Mock<IProductService>();
-            _mockClient = new Mock<IProvisioningClient>();
-            _mockClient.Setup(m => m.SendProvisioningRequest(provisioningRequest)).Returns(Task.FromResult(mockResponseMessage));
+            _mockClient = new Mock<ISupplyClient>();
+            _mockClient.Setup(m => m.SendSupplyRequest(provisioningRequest)).Returns(Task.FromResult(mockResponseMessage));
             
             _service = new LijpeVoorraadServerService(_mockProductService.Object);
 
             // Act
-            var result = await _service.PostProvisioning(_mockClient.Object, provisioningRequest);
+            var result = await _service.PostSupplyRequest(_mockClient.Object, provisioningRequest);
 
             // Assert
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-            _mockClient.Verify(m => m.SendProvisioningRequest(provisioningRequest), Times.Once);
+            _mockClient.Verify(m => m.SendSupplyRequest(provisioningRequest), Times.Once);
         }
     }
 }

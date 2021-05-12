@@ -11,36 +11,33 @@ namespace WebApplication.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProvisionController : ControllerBase
+    public class ResupplyController : ControllerBase
     {
-        private readonly ILogger<ProvisionController> _logger;
+        private readonly ILogger<ResupplyController> _logger;
         private readonly ILijpeVoorraadServerService _voorraadService;
 
-        public ProvisionController(ILogger<ProvisionController> logger, ILijpeVoorraadServerService voorraadService)
+        public ResupplyController(ILogger<ResupplyController> logger, ILijpeVoorraadServerService voorraadService)
         {
             _voorraadService = voorraadService;
             _logger = logger;
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostSupply(ProvisioningRequest provision)
+        public async Task<ActionResult> PostResupply(SupplyRequest Resupply)
         {
-            if (provision == null || provision.ProvisionProducts == null)
+            if (Resupply == null || Resupply.ProvisionProducts == null)
             {
                 return BadRequest();
             }
             try
             {
-                await _voorraadService.PostSupply(provision);
-                return new OkObjectResult(provision);
+                await _voorraadService.ProcessResupplyAmounts(Resupply);
+                return new OkObjectResult(Resupply);
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         }
-
-        // TODO: Note to self:
-        // Add unit and integration tests for PostSupply flow
     }
 }

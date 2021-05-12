@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Service.Clients
 {
-    public class LijpeVoorraadServerClient : IProvisioningClient
+    public class LijpeVoorraadServerClient : ISupplyClient
     {
-        public async Task<HttpResponseMessage> SendProvisioningRequest(ProvisioningRequest request)
+        public async Task<HttpResponseMessage> SendSupplyRequest(SupplyRequest request)
         {
             var json = JsonConvert.SerializeObject(request);
             var body = new StringContent(json, Encoding.UTF8, "application/json");

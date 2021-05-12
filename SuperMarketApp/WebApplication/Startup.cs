@@ -39,7 +39,7 @@ namespace WebApplication
                 options.UseSqlServer(Configuration.GetConnectionString("ProductContext")));
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ILijpeVoorraadServerService, LijpeVoorraadServerService>();
-            services.AddScoped<IProvisioningClient, LijpeVoorraadServerClient>();
+            services.AddScoped<ISupplyClient, LijpeVoorraadServerClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

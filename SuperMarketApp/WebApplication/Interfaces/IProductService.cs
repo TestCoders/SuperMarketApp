@@ -9,7 +9,7 @@ namespace Service.Interfaces
         Task<int> DecreaseProductAmount(int barcode, int amount);
         Task<int> DeleteProduct(int barcode);
         Task<Product> GetProduct(int barcode);
-        Task<IEnumerable<Product>> GetProvisionProducts(int provisionMax);
+        Task<IEnumerable<Product>> GetProductsToResupply(int supplyMax);
         Task<int> InsertProduct(Product product);
         Task<int> IncreaseProductAmount(int barcode, int amount);
     }

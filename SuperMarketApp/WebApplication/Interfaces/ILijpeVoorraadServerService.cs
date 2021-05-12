@@ -6,8 +6,8 @@ namespace Service.Interfaces
 {
     public interface ILijpeVoorraadServerService
     {
-        Task<HttpResponseMessage> PostProvisioning(IProvisioningClient client, ProvisioningRequest request);
-        Task <int> PostSupply(ProvisioningRequest request);
-        Task<ProvisioningRequest> CreateProvisionRequest(int provisionMax);
+        Task<HttpResponseMessage> PostSupplyRequest(ISupplyClient client, SupplyRequest request);
+        Task <int> ProcessResupplyAmounts(SupplyRequest request);
+        Task<SupplyRequest> CreateSupplyRequest(int provisionMax);
     }
 }

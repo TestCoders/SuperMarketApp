@@ -11,7 +11,7 @@ namespace Service.IntegrationTests
         public async Task GetProvisionProductsTest_ShouldReturnAtLeastTwoProducts()
         {
             // Act
-            var provisionProducts = await LijpeVoorraadServerService.CreateProvisionRequest(100);
+            var provisionProducts = await LijpeVoorraadServerService.CreateSupplyRequest(100);
 
             // Assert
             Assert.That(provisionProducts.ProvisionProducts.Count >= 2);
@@ -24,11 +24,11 @@ namespace Service.IntegrationTests
             var expectedStatusCode = HttpStatusCode.OK;
 
             // Assemble
-            var provisionRequest = await LijpeVoorraadServerService .CreateProvisionRequest(100);
+            var provisionRequest = await LijpeVoorraadServerService .CreateSupplyRequest(100);
             var provisioningClient = new LijpeVoorraadServerClient();
 
             // Act
-            var result = await LijpeVoorraadServerService.PostProvisioning(provisioningClient, provisionRequest);
+            var result = await LijpeVoorraadServerService.PostSupplyRequest(provisioningClient, provisionRequest);
 
             // Assert
             Assert.AreEqual(expectedStatusCode, result.StatusCode);

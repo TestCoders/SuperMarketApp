@@ -34,7 +34,7 @@ namespace Service.Services
             return rowsAffected;
         }
 
-        public async Task<IEnumerable<Product>> GetProvisionProducts(int provisionMax)
+        public async Task<IEnumerable<Product>> GetProductsToResupply(int provisionMax)
         {
             return await Task.FromResult(_context.Product.ToList().Where(p => p.Amount < provisionMax));
         }

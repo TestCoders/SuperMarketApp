@@ -15,12 +15,12 @@ namespace Service.Services
             _productService = productService;
         }
 
-        public async Task<HttpResponseMessage> PostProvisioning(IProvisioningClient client, ProvisioningRequest request)
+        public async Task<HttpResponseMessage> PostSupplyRequest(ISupplyClient client, SupplyRequest request)
         {
-            return await client.SendProvisioningRequest(request);
+            return await client.SendSupplyRequest(request);
         }
 
-        public async Task<int> PostSupply(ProvisioningRequest request)
+        public async Task<int> ProcessResupplyAmounts(SupplyRequest request)
         {
             int rowsAffected = 0;
 
@@ -31,14 +31,14 @@ namespace Service.Services
             return rowsAffected;
         }
 
-        public async Task<ProvisioningRequest> CreateProvisionRequest(int provisionMax)
+        public async Task<SupplyRequest> CreateSupplyRequest(int provisionMax)
         {
-            var provisioningRequest = new ProvisioningRequest
+            var provisioningRequest = new SupplyRequest
             {
                 ProvisionProducts = new List<ProvisioningProduct>()
             };
 
-            var provisioningProducts = await _productService.GetProvisionProducts(100);
+            var provisioningProducts = await _productService.GetProductsToResupply(100);
 
             foreach (var product in provisioningProducts)
             {
