@@ -1,6 +1,6 @@
-﻿using SuperMarketApp.Service.Enum;
+﻿using Service.Enum;
 
-namespace SuperMarketApp.Service.Models
+namespace Service.Models
 {
     public class Product
     {

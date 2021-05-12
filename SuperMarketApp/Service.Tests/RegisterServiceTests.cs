@@ -3,7 +3,6 @@ using NUnit.Framework;
 using Service.Interfaces;
 using Service.Models;
 using Service.Services;
-using SuperMarketApp.Service.Models;
 
 namespace Service.Tests
 {

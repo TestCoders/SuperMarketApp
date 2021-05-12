@@ -1,13 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Service.Interfaces;
+using Service.Repositories;
 using Service.Services;
-using SuperMarketApp.Repositories.Context;
-using System;
-using System.Configuration;
 using System.IO;
 
 namespace Service.IntegrationTests

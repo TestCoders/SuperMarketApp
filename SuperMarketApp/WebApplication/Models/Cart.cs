@@ -1,5 +1,4 @@
-﻿using SuperMarketApp.Service.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Service.Models
 {

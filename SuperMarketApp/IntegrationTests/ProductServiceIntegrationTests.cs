@@ -1,11 +1,11 @@
 using NUnit.Framework;
+using Service.Enum;
 using Service.IntegrationTests;
-using SuperMarketApp.Service.Enum;
-using SuperMarketApp.Service.Models;
+using Service.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace SuperMarketApp.Service.IntegrationTests
+namespace Service.IntegrationTests
 {
     public class ProductServiceIntegrationTests : Init
     {

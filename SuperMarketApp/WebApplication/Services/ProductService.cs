@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Service.Interfaces;
-using SuperMarketApp.Repositories.Context;
-using SuperMarketApp.Service.Models;
-using System;
+using Service.Models;
+using Service.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

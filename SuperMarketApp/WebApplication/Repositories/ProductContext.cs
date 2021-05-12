@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SuperMarketApp.Service.Enum;
-using SuperMarketApp.Service.Models;
+using Service.Enum;
+using Service.Models;
 
-namespace SuperMarketApp.Repositories.Context
+namespace Service.Repositories
 {
     public class ProductContext : DbContext 
     {
